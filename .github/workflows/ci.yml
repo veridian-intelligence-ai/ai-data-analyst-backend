@@ -1,0 +1,22 @@
+name: CI
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main, dev]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt "pytest==8.3.4" "ruff==0.16.4"
+      - run: ruff check .
+      # The gate suite runs entirely on fakes — no live credentials in CI.
+      - run: python -m pytest tests/ -q
+      # Context pack integrity (the mission M07 gate, cheap enough for CI).
+      - run: python scripts/validate_context_pack.py

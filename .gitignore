@@ -1,0 +1,26 @@
+# Secrets — never commit environment files (the template is the exception).
+.env
+.env.*
+!.env.example
+
+# Key material — a service-principal certificate or private key dropped into
+# the repo for "quick testing" must never be committable.
+*.pem
+*.key
+*.pfx
+*.p12
+
+# Logs and local database dumps
+logs/
+*.log
+*.sqlite
+*.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# test caches
+.pytest_cache/
+.ruff_cache/

@@ -1,0 +1,13 @@
+# Pinned on purpose: the source system used floating ranges and a routine
+# redeploy pulled a breaking minor of a core dependency. Pin, then upgrade
+# deliberately (and one at a time).
+# Direct dependencies only — transitives (starlette, pydantic, anyio, ...)
+# still float within these pins; generate a full lock (pip-compile) if your
+# deploys need bit-for-bit reproducibility.
+fastapi==0.115.12
+uvicorn[standard]==0.34.2
+anthropic==0.52.0
+httpx==0.28.1
+psycopg2-binary==2.9.10
+python-dotenv==1.1.0
+workos==8.1.0

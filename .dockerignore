@@ -1,0 +1,12 @@
+# Keep the build context minimal — and keep secrets out of image layers.
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.venv/
+.git/
+.gitignore
+Dockerfile
+.dockerignore
+README.md

@@ -1,0 +1,23 @@
+[project]
+name = "ai-data-analyst-backend"
+version = "1.0.0"
+description = "AI Data Analyst starter backend — NL to DAX over Power BI, single-tenant FastAPI service."
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = [
+    # Long teaching docstrings/comments occasionally exceed the line limit.
+    "E501",
+    # `Depends(...)` in parameter defaults is FastAPI's documented dependency
+    # idiom — B008 flags it generically; suppressing it here is standard for
+    # FastAPI projects.
+    "B008",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
